@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 
 // app.use("/", require("./routes/pages"));
+app.get("/", (req, res) => {
+  res.send("TNP CELL, IIITBH API HOST");
+});
 app.use("/api", require("./routes/profile"));
 // app.use("/api", require("./routes/resume"));
 
