@@ -10,6 +10,10 @@ const studProf = mongoose.Schema({
   phone: String,
   linkedin: String,
   github: String,
+  profilePic: {
+    data: Buffer,
+    contentType: String,
+  },
   resume: {
     data: Buffer,
     contentType: String,
