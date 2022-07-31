@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
   res.send("TNP CELL, IIITBH API HOST");
 });
 app.use("/api", require("./routes/profile"));
+app.use("/api/admin", require("./routes/admin"));
 // app.use("/api", require("./routes/resume"));
 
 var port = process.env.PORT || 5000;

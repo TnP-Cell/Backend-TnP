@@ -4,14 +4,7 @@ var admin = mongoose.Schema({
   username: String,
   password: String,
   name: String,
-  news: {
-    description: String,
-    link: String,
-  },
-  events: {
-    description: String,
-    link: String,
-  },
+  post: String,
 });
 
 module.exports = mongoose.model("adminDetails", admin);
