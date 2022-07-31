@@ -1,7 +1,7 @@
 const express = require("express");
 const news = express.Router();
 const newsModel = require("../models/newsModel");
-const jwtverify = require("../middleware/jwtverify");
+const jwtverify = require("../middleware/jwtVerfication");
 const adminData = require("../models/adminModel");
 
 news.post("/newsUpload", jwtverify, (req, res) => {

@@ -31,3 +31,5 @@ events.get("/eventsFetch", (req, res) => {
     res.status(200).json({ status: 0, data: result });
   });
 });
+
+module.exports=events;

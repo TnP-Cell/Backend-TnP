@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
 });
 app.use("/api", require("./routes/profile"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/news", require("./routes/news"));
+app.use("/api/events", require("./routes/events"));
 // app.use("/api", require("./routes/resume"));
 
 var port = process.env.PORT || 5000;

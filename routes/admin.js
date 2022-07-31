@@ -2,7 +2,7 @@ const express = require("express");
 const admin = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const jwtverify = require("../middleware/jwtverify");
+const jwtverify = require("../middleware/jwtVerfication");
 const adminModel = require("../models/adminModel");
 
 admin.post("/adminLogin", (req, res) => {
