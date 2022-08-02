@@ -7,6 +7,7 @@ var news = mongooose.Schema({
     link: String,
   },
   date: String,
+  month: String,
 });
 
 module.exports=mongooose.model("newsDetails", news);

@@ -16,7 +16,8 @@ events.post("/eventsUpload", jwtverify, (req, res) => {
         desc: desc,
         link: link,
       },
-      date: Date(),
+      date: Date().getDate(),
+      month: Date().getMonth(),
     });
     eventsAdd.save((err, result) => {
       if (err) res.status(400).json({ status: -1 });
@@ -32,4 +33,4 @@ events.post("/eventsFetch", (req, res) => {
   });
 });
 
-module.exports=events;
+module.exports = events;

@@ -7,6 +7,7 @@ var events = mongoose.Schema({
     link: String,
   },
   date: String,
+  month: String,
 });
 
 module.exports = mongoose.model("eventsDetails", events);

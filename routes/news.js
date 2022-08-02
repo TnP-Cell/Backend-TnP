@@ -16,7 +16,8 @@ news.post("/newsUpload", jwtverify, (req, res) => {
         desc: desc,
         link: link,
       },
-      date: Date(),
+      date: Date().getDate(),
+      month: Date().getMonth(),
     });
     newsAdd.save((err, result) => {
       if (err) res.status(400).json({ status: -1 });
