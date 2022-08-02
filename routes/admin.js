@@ -11,9 +11,9 @@ admin.post("/adminLogin", (req, res) => {
   adminModel.findOne({ username: username }, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
     if (result) {
-      bcrypt.compare(password, result.password, (err, result) => {
+      bcrypt.compare(password, result.password, (err, match) => {
         if (err) res.status(400).json({ status: -1 });
-        if (result) {
+        if (match) {
           var data = { id: result._id };
           var auth_token = jwt.sign(data, process.env.JWT_TOKEN);
           res.status(200).json({ status: 0, auth_token });
@@ -25,6 +25,7 @@ admin.post("/adminLogin", (req, res) => {
 
 admin.post("/adminShow", jwtverify, (req, res) => {
   var id = req.userid;
+  // console.log(id);
   adminModel.findOne({ _id: id }, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
     var data = {

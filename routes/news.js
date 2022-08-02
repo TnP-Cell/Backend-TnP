@@ -25,11 +25,11 @@ news.post("/newsUpload", jwtverify, (req, res) => {
   });
 });
 
-news.get("/newsFetch", (req, res) => {
+news.post("/newsFetch", (req, res) => {
   newsModel.find({}, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
     res.status(200).json({ status: 0, data: result });
   });
 });
 
-module.exports=news;
+module.exports = news;

@@ -25,7 +25,7 @@ events.post("/eventsUpload", jwtverify, (req, res) => {
   });
 });
 
-events.get("/eventsFetch", (req, res) => {
+events.post("/eventsFetch", (req, res) => {
   eventsModel.find({}, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
     res.status(200).json({ status: 0, data: result });

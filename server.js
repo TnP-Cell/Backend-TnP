@@ -6,15 +6,14 @@ const cors = require("cors");
 const app = express();
 connect();
 
-// app.set("view engine", "ejs");
-// app.use(express.static(__dirname + "/"));
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/"));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
 
 // app.use("/", require("./routes/pages"));
 app.get("/", (req, res) => {
-  res.send("TNP CELL, IIITBH API HOST");
+  res.render("index.ejs");
 });
 app.use("/api", require("./routes/profile"));
 app.use("/api/admin", require("./routes/admin"));
