@@ -10,14 +10,15 @@ news.post("/newsUpload", jwtverify, (req, res) => {
   var link = req.body.link;
   adminData.findOne({ _id: id }, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
+    var d=new Date();
     var newsAdd = new newsModel({
       name: result.name,
       news: {
         desc: desc,
         link: link,
       },
-      date: Date().getDate(),
-      month: Date().getMonth(),
+      date: d.getDate(),
+      month: d.getMonth(),
     });
     newsAdd.save((err, result) => {
       if (err) res.status(400).json({ status: -1 });

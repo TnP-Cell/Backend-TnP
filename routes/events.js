@@ -10,14 +10,15 @@ events.post("/eventsUpload", jwtverify, (req, res) => {
   var link = req.body.link;
   adminModel.findOne({ _id: id }, (err, result) => {
     if (err) res.status(400).json({ status: -1 });
+    var d = new Date();
     var eventsAdd = new eventsModel({
       name: result.name,
       events: {
         desc: desc,
         link: link,
       },
-      date: Date().getDate(),
-      month: Date().getMonth(),
+      date: d.getDate(),
+      month: d.getMonth(),
     });
     eventsAdd.save((err, result) => {
       if (err) res.status(400).json({ status: -1 });
