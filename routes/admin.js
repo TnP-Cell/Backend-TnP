@@ -4,6 +4,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const jwtverify = require("../middleware/jwtVerfication");
 const adminModel = require("../models/adminModel");
+const carouselImages = require("../models/carouselImg");
+const upload = require("../middleware/fileUpload");
+const path = require("path");
+const fs = require("fs");
 
 admin.post("/adminLogin", (req, res) => {
   var username = req.body.username;
@@ -56,6 +60,30 @@ admin.post("/adminRegister", (req, res) => {
         res.status(200).json({ status: 0 });
       });
     });
+  });
+});
+
+admin.post("/carouselUpload", upload.single("image"), jwtverify, (req, res) => {
+  var id = req.userid;
+  adminModel.findOne({ _id: id }, (err, result) => {
+    if (err) res.status(403).json({ status: -1 });
+    var data = new carouselImages({
+      name: result.name,
+      post: result.post,
+      img: {
+        data: fs.readFileSync(
+          path.join(__dirname + "/uploads" + req.file.filename)
+        ),
+        contentType: "image/jpeg",
+      },
+    });
+
+    data.save((err, result) => {
+      if (err) res.status(400).json({ status: -1 });
+      console.log("Image Uploaded");
+      fs.unlinkSync(path.join(__dirname + "/uploads" + req.file.filename));
+    });
+    res.status(200).json({ status: -1 });
   });
 });
 

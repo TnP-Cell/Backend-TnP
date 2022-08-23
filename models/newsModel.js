@@ -10,4 +10,4 @@ var news = mongooose.Schema({
   month: String,
 });
 
-module.exports=mongooose.model("newsDetails", news);
+module.exports = mongooose.model("newsDetails", news);
