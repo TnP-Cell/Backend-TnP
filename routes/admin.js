@@ -72,7 +72,7 @@ admin.post("/carouselUpload", upload.single("image"), jwtverify, (req, res) => {
       post: result.post,
       img: {
         data: fs.readFileSync(
-          path.join(__dirname + "/uploads" + req.file.filename)
+          path.join(__dirname + "/uploads/" + req.file.filename)
         ),
         contentType: "image/jpeg",
       },
@@ -81,7 +81,7 @@ admin.post("/carouselUpload", upload.single("image"), jwtverify, (req, res) => {
     data.save((err, result) => {
       if (err) res.status(400).json({ status: -1 });
       console.log("Image Uploaded");
-      fs.unlinkSync(path.join(__dirname + "/uploads" + req.file.filename));
+      fs.unlinkSync(path.join(__dirname + "/uploads/" + req.file.filename));
     });
     res.status(200).json({ status: -1 });
   });
