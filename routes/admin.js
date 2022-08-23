@@ -83,7 +83,7 @@ admin.post("/carouselUpload", upload.single("image"), jwtverify, (req, res) => {
       console.log("Image Uploaded");
       fs.unlinkSync(path.join(__dirname + "/uploads/" + req.file.filename));
     });
-    res.status(200).json({ status: -1 });
+    res.status(200).json({ status: 0 });
   });
 });
 
