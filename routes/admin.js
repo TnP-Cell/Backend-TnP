@@ -63,6 +63,16 @@ admin.post("/adminRegister", (req, res) => {
   });
 });
 
+admin.post("/carouselShow", (req, res) => {
+  carouselImages.find({}, (err, result) => {
+    if (err) res.status(400).json({ status: -1 });
+    var data = {
+      images: result,
+    };
+    res.status(200).json({ status: 0, data });
+  });
+});
+
 admin.post("/carouselUpload", upload.single("image"), jwtverify, (req, res) => {
   var id = req.userid;
   adminModel.findOne({ _id: id }, (err, result) => {
