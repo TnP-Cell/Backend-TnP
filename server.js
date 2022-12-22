@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use("/", require("./routes/pages"));
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 app.use("/api", require("./routes/profile"));
 app.use("/api/admin", require("./routes/admin"));
