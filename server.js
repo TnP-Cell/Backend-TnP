@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 connect();
 
+app.set('views', './views');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/"));
 app.use(cors());
